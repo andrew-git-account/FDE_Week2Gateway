@@ -91,6 +91,10 @@ All Week 2 Gateway deliverables must be created in the `Specification/` director
 - **Problem Statement and Success Metrics** (`02_Problem_Statement_and_Success_Metrics.md`) — Problem quantification
 - **Stakeholder Presentation Strategy** (`09_Stakeholder_Presentation_Strategy.md`) — Sarah Whitmore presentation approach
 - **Stakeholder Presentation** (`Stakeholder_Presentation.html`) — 14-slide HTML presentation (convertible to PDF)
+- **Stakeholder Presentation PDF** (`Stakeholder_Presentation.pdf`) — PDF version of presentation (299 KB)
+- **Demo Application Design** (`10_Demo_Application_Design.md`) — Complete architecture and design for browser-based Python demo
+- **Demo Application Summary** (`11_Demo_Application_Summary.md`) — Build status, testing results, and deployment guide
+- **Working Demo Application** (`../demo_app/`) — Fully functional Flask-based demo showcasing agent capabilities
 
 ### Naming Convention
 Individual deliverable files as above, or single consolidated document: `Gate2-<FirstName>-<LastName>.md` with clear headings for each deliverable.
@@ -230,3 +234,92 @@ Gate 2 is a 3-hour timed exercise. Suggested allocation:
 - 165–180 min: Project CLAUDE.md + final pass
 
 Near-pass is a fail. Prioritize precision over completeness. Known gaps with explicit scope-out plans are better than silent omissions.
+
+## Demo Application
+
+A fully functional browser-based Python demo application has been built to showcase the ETA Inquiry Agent concept.
+
+### Location and Structure
+
+```
+demo_app/
+├── app.py                      # Flask application with REST API
+├── requirements.txt            # Python dependencies (Flask, geopy, etc.)
+├── README.md                   # Complete setup and usage guide
+├── DEMO_GUIDE.md              # 5-minute walkthrough script
+├── start.bat / start.sh       # Quick launch scripts
+├── agent/
+│   ├── order_validator.py     # Order ID extraction & validation
+│   ├── eta_calculator.py      # ETA calculation (standard & precision)
+│   └── escalation_engine.py   # Escalation trigger detection
+├── data/
+│   ├── mock_orders.json       # 8 sample orders for testing
+│   └── mock_routes.json       # 4 routes with GPS data
+└── templates/
+    ├── index.html             # Customer inquiry interface
+    ├── admin.html             # Admin panel (decision log)
+    └── comparison.html        # Comparison view (baseline vs agent metrics)
+```
+
+### How to Run
+
+```bash
+cd demo_app
+python app.py
+```
+
+Then open browser to:
+- **Customer View**: http://localhost:5000/
+- **Admin Panel**: http://localhost:5000/admin
+- **Comparison View**: http://localhost:5000/comparison
+
+### Key Features Demonstrated
+
+1. **Delegation Archetypes**
+   - Fully Agentic (green badge) - Standard ETA lookup, <1 sec response
+   - Agent-Led (yellow badge) - Precision ETA with confidence scoring
+   - Human-Only (red badge) - Escalated due to triggers (GPS stale, exceptions)
+
+2. **Escalation Triggers**
+   - GPS data stale (>30 min threshold)
+   - Order not found in system
+   - Delivery exception status
+   - High-value package (>£500) in EXCEPTION state
+   - Customer callback request
+
+3. **Decision Transparency**
+   - Real-time admin panel showing every agent decision
+   - Response time tracking (milliseconds)
+   - Escalation reasons visible
+   - Confidence levels exposed
+
+4. **Performance Metrics**
+   - Comparison view: 96% faster response (8.5 min → 30 sec)
+   - Deflection rate: 90% target (360/400 cases autonomous)
+   - Business case: £301K annual savings
+   - Live statistics dashboard
+
+### Test Scenarios
+
+| Order ID | Scenario | Expected Behavior |
+|----------|----------|-------------------|
+| `AX-771-3344` | Standard lookup | Fully Agentic (<1 sec, green badge) |
+| `AX-771-3344` → "More specific?" | Precision ETA | GPS-based calculation, confidence shown |
+| `AX-441-8821` → "More specific?" | GPS stale | Escalates (52 min > 30 min threshold) |
+| `AX-996-7890` | High-value exception | Immediate escalation (£1,250, EXCEPTION) |
+| `XX-999-9999` | Order not found | Validation error, escalation option |
+
+### Demo Purpose
+
+- **Not production-ready** - Uses mock data, no real system integrations
+- **Proof-of-concept** - Validates agent capabilities before expensive integration
+- **Stakeholder demo** - Shows Sarah Whitmore (COO) how agent handles inquiries
+- **Low-risk validation** - Runs standalone, no disruption to live systems
+- **Business case proof** - Demonstrates 96% faster response, 90% deflection, £301K savings
+
+### Documentation
+
+- **Design**: `Specification/10_Demo_Application_Design.md` - Complete architecture and algorithms
+- **Summary**: `Specification/11_Demo_Application_Summary.md` - Build status and testing results
+- **Quick Guide**: `demo_app/DEMO_GUIDE.md` - 5-minute walkthrough script
+- **Full Docs**: `demo_app/README.md` - Setup, usage, and troubleshooting
