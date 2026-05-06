@@ -48,41 +48,49 @@ All Week 2 Gateway deliverables must be created in the `Specification/` director
 
 ### Required Deliverables (7 total)
 
-1. **Cognitive Load Map** (`01-cognitive-load-map.md`)
+1. **Cognitive Load Map** (`03_Cognitive_Load_Map.md`) 
    - Decompose at least 2 of 4 work streams (Delivery Exceptions, ETA Inquiries, Dispatch Adjustments, Billing Disputes)
    - Jobs to be Done → micro-tasks → cognitive dimensions
    - Map cognitive zones and breakpoints
    - Must reflect *lived* work (from artefacts), not just documented SOPs
 
-2. **Delegation Suitability Matrix** (`02-delegation-suitability-matrix.md`)
+2. **Delegation Suitability Matrix** (`04_Delegation_Suitability_Matrix.md`) 
    - Score each major task cluster on delegation dimensions
    - Assign archetypes: fully agentic / agent-led with oversight / human-led with agent support / human-only
    - **CRITICAL**: Justify every archetype assignment — "everything is fully agentic" is the most marked-down anti-pattern
    - Arbitrary assignments will be challenged
 
-3. **Volume × Value Analysis** (`03-volume-value-analysis.md`)
+3. **Volume × Value Analysis** (`05_Volume_Value_Analysis.md`) 
    - Plot 4 work streams on volume × value axes
    - Identify primary agentic target
    - Justify why it wins over alternatives
 
-4. **Agent Purpose Document** (`04-agent-purpose-document.md`)
+4. **Agent Purpose Document** (`06_Agent_Purpose_Document.md`) 
    - For highest-value opportunity: purpose, scope, KPIs, autonomy matrix, escalation triggers, failure modes
    - Must be precise enough that an AI coding agent could begin building from it
    - Follow buildability checklist from `FDE/Intro+Week1/production-spec-checklist.md`
 
-5. **System/Data Inventory** (`05-system-data-inventory.md`)
+5. **System/Data Inventory** (`07_System_Data_Inventory.md`) 
    - What the agent needs to access, what's available, what's missing, what's risky
    - **CRITICAL**: Address Aurum Billing constraints (batch-file exports only, no real-time API, 24h lag, 48h ticket turnaround)
    - State assumptions explicitly where systems not fully detailed in brief
 
-6. **Discovery Questions for Main Stakeholder** (`06-discovery-questions.md`)
+6. **Discovery Questions for Main Stakeholder** (`08_Discovery_Questions.md`) 
    - Questions whose answers would *actually* change your design
    - **NOT** generic "tell me about your process" questions
    - For domain-naïve participants, this is the most direct signal of FDE judgment
 
-7. **Project CLAUDE.md** (`07-project-claude-md.md`)
+7. **Project CLAUDE.md** (`../CLAUDE.md`)
    - CLAUDE.md as if you were handing off to implementation team
    - Demonstrates workflow discipline
+   - Should include: build/run instructions, API integration details, Aurum constraint handling, delegation boundaries, escalation patterns, testing strategy
+
+### Additional Deliverables Created (Not Required by Gate 2)
+
+- **Domain Orientation** (`01_Domain_Orientation.md`) — Comprehensive domain analysis
+- **Problem Statement and Success Metrics** (`02_Problem_Statement_and_Success_Metrics.md`) — Problem quantification
+- **Stakeholder Presentation Strategy** (`09_Stakeholder_Presentation_Strategy.md`) — Sarah Whitmore presentation approach
+- **Stakeholder Presentation** (`Stakeholder_Presentation.html`) — 14-slide HTML presentation (convertible to PDF)
 
 ### Naming Convention
 Individual deliverable files as above, or single consolidated document: `Gate2-<FirstName>-<LastName>.md` with clear headings for each deliverable.
